@@ -1,0 +1,242 @@
+:root {
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+
+  --primary: #3b82f6;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+}
+
+.appShell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.appHeader {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brandTitle {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brandMeta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.selectLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.noteSelect {
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0 10px;
+  min-width: 220px;
+  outline: none;
+}
+
+.noteSelect:focus {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  color: rgba(29, 78, 216, 1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.pillError {
+  background: rgba(239, 68, 68, 0.1);
+  color: rgba(153, 27, 27, 1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.appMain {
+  flex: 1;
+  padding: 16px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.split {
+  height: calc(100vh - 160px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.panelHeader {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panelBody {
+  padding: 10px 12px;
+  overflow: auto;
+  min-height: 0;
+}
+
+.editorTextarea {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.previewContent {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.previewContent pre {
+  background: #0b1220;
+  color: #e5e7eb;
+  padding: 12px;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.previewContent code {
+  font-family: var(--mono);
+  font-size: 0.95em;
+}
+
+.previewContent h1,
+.previewContent h2,
+.previewContent h3 {
+  letter-spacing: -0.01em;
+}
+
+.previewContent a {
+  color: var(--primary);
+}
+
+.callout {
+  border-radius: 12px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.06);
+  padding: 12px;
+}
+
+.calloutTitle {
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: rgba(153, 27, 27, 1);
+}
+
+.calloutBody {
+  color: rgba(153, 27, 27, 0.9);
+  font-size: 13px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(59, 130, 246, 0.25);
+  border-top-color: rgba(59, 130, 246, 1);
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.appFooter {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive: stack panels on small screens */
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .noteSelect {
+    min-width: 180px;
+  }
+}
