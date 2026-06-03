@@ -31,11 +31,22 @@ async function fetchJson(path, options = {}) {
     });
 
     const text = await res.text();
-    const data = text ? JSON.parse(text) : null;
+    let data = null;
+    if (text) {
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        // Helpful when a proxy/server returns HTML or plaintext instead of JSON.
+        throw new Error(
+          `Invalid JSON response (${res.status}). First 200 chars: ${text.slice(0, 200)}`
+        );
+      }
+    }
 
     if (!res.ok) {
       const msg =
-        (data && (data.detail || data.message)) ||
+        // FastAPI default: {detail: ...}; our backend handler: {message, details}
+        (data && (data.detail || data.details || data.message)) ||
         `Request failed (${res.status})`;
       throw new Error(msg);
     }
