@@ -35,6 +35,15 @@ npm install
 npm start
 ```
 
+## Convenience scripts (repo root)
+
+From the repository root, you can also use:
+
+```bash
+./scripts/frontend_install.sh
+./scripts/frontend_run.sh
+```
+
 ## End-to-end smoke check
 
 1) Start the FastAPI backend (it should expose Swagger at `/docs` and OpenAPI JSON at `/openapi.json`).
