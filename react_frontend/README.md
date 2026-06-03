@@ -35,7 +35,14 @@ npm install
 npm start
 ```
 
-## Convenience scripts (repo root)
+## Convenience scripts
+
+From within this folder, you can use:
+
+```bash
+./frontend_install.sh
+./frontend_run.sh
+```
 
 From the repository root, you can also use:
 
